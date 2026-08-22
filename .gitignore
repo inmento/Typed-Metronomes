@@ -1,0 +1,11 @@
+# Generated release archives
+*.zip
+
+# Lua bytecode and test scratch files
+*.luac
+*.tmp
+
+# Local editor metadata
+.DS_Store
+.vscode/
+.idea/
