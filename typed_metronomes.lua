@@ -70,7 +70,7 @@ function TypedMetronomes.itemRecord(row, generation)
     machine = { kind = "TM", move = row.move, number = row.number },
   }
   if generation == 2 then
-    -- Gold/Silver Pack fields.  Top-level item records deliberately retain
+    -- Gen 2 Pack fields. Top-level item records deliberately retain
     -- generation-specific metadata that the shared schema does not own.
     record.pocket = "TM_HM"
     record.tmNumber = row.number + 7 -- native Gen 2's seven HMs occupy 51–57 internally
@@ -162,7 +162,7 @@ function TypedMetronomes.pick(data, row, generation, rng)
   local pool = TypedMetronomes.pool(data, row, generation)
   if #pool == 0 then return nil end
   if generation == 2 then
-    -- Gold's battle RNG returns 0..n-1.
+    -- The Gen 2 battle RNG returns 0..n-1.
     return pool[(rng and rng(#pool) or 0) + 1]
   end
   -- Gen 1's battle RNG returns inclusive a..b.

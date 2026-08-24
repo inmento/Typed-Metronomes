@@ -1,15 +1,15 @@
 {
   "id": "typed_metronomes",
   "name": "Typed Metronomes",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
   "category": "GAMEPLAY",
   "games": ["gen1", "gen2"],
-  "game_version": ">=0.2.19 <2.0.0",
+  "game_version": ">=0.2.24 <2.0.0",
   "priority": 120,
   "permissions": ["engine_internals"],
-  "description": "Adds numbered TM-style moves that call a random move of the taught Pokémon type, sold through Type Academy shelves in Pewter and Violet Marts.",
+  "description": "Adds numbered TM-style moves that call a random move of the taught Pokémon type, sold through Type Academy shelves in Pewter and Violet Marts for Red, Blue, Yellow, Gold, Silver, and Crystal.",
   "github": "inmento/Typed-Metronomes"
 }

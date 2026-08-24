@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0 — Native Crystal support
+
+Typed Metronomes now supports **Pokémon Crystal** on Gen1Recomp `0.2.24` and later. Crystal follows the established Gen 2 route for Type Academy Mart insertion, TM51–TM68 registration, Gen 2 move pools, and the typed-only primary-type Curse wrapper; no Gold/Silver behavior or typed-move rule changed.
+
+The integration suite now executes the full Gen 2 scenario under both `gold` and `crystal` identifiers. It verifies Crystal’s Gen 2 items, type learnability, Violet Mart shelf, Curse override and Ghost-primary behavior, and ordinary-Mart exclusion. The release bundles no Crystal ROM data or assets.
+
 ## 0.1.0 — Initial release
 
 **Typed Metronomes** introduces new numbered TM-style moves that call random moves from a selected type pool while preserving the engine’s ordinary move-resolution behavior. The release adds TM51–TM65 to Generation 1 and TM51–TM68 to Generation 2, with primary-or-secondary type eligibility and a Type Academy shelf at Pewter City Poké Mart or Violet City Poké Mart respectively.

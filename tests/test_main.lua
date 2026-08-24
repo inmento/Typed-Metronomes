@@ -118,7 +118,8 @@ local function runGen1()
   assert(not has(other.stock, "TYPE_TM51"), "other Gen 1 Marts must remain unchanged")
 end
 
-local function runGen2()
+local function runGen2(version)
+  version = version or "gold"
   clearModules()
   local MartMenu = {}
   MartMenu.new = function(_, opts)
@@ -127,7 +128,11 @@ local function runGen2()
     } }
   end
   package.preload["src.core.GameVersion"] = function()
-    return { get = function() return "gold" end, generation = function() return 2 end }
+    return {
+      get = function() return version end,
+      generation = function() return 2 end,
+      engine = function() return version == "crystal" and "crystal" or "gs" end,
+    }
   end
   package.preload["src.ui.gen2.MartMenu"] = function() return MartMenu end
   package.preload["src.battle.gen2.Effects"] = function() return { MAX_STAGE = 6 } end
@@ -146,12 +151,12 @@ local function runGen2()
   assert(mod.content.items.entries.TYPE_TM68,
     "Gen 2 must register the ??? typed TM")
   assert(mod.content.items.entries.TYPE_TM62.teaches == "TYPE_METRO_ELECTRIC",
-    "Gold custom TM must expose its taught move")
+    "Gen 2 custom TM must expose its taught move")
   assert(has(species.GENGAR.tmhm, "TYPE_METRO_GHOST")
       and has(species.GENGAR.tmhm, "TYPE_METRO_POISON"),
-    "Gold dual type must receive both typed TM learnability entries")
+    "Gen 2 dual type must receive both typed TM learnability entries")
   assert(mod.content.move_effects.overrides.EFFECT_CURSE,
-    "Gold must wrap Curse only for the typed-call semantic")
+    "Gen 2 must wrap Curse only for the typed-call semantic")
 
   local curse = mod.content.move_effects.overrides.EFFECT_CURSE.run
   local function curseBattle(types)
@@ -196,10 +201,11 @@ local function runGen2()
   local other = MartMenu.new({ world = { map = { id = "AZALEA_MART" } } },
     { martType = "STANDARD" })
   for _, entry in ipairs(other.entries) do
-    assert(not tostring(entry.id):match("^TYPE_TM"), "other Gold Marts must remain unchanged")
+    assert(not tostring(entry.id):match("^TYPE_TM"), "other Gen 2 Marts must remain unchanged")
   end
 end
 
 runGen1()
-runGen2()
-print("typed metronomes integration tests passed (17 assertions)")
+runGen2("gold")
+runGen2("crystal")
+print("typed metronomes integration tests passed (29 assertions)")

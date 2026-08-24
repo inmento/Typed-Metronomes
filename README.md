@@ -2,7 +2,7 @@
 
 **Typed Metronomes** adds a new family of numbered TM-style moves for Gen1Recomp’s Generation 1 and Generation 2 games. A typed Metronome calls a random move from its assigned type pool, then delegates that move to the game’s normal battle resolver. The called move therefore retains its ordinary accuracy, damage, animation, secondary effect, targeting, charge/recharge, recoil, and type interactions.
 
-The mod is available for **Red, Blue, Yellow, Gold, and Silver** on Gen1Recomp `0.2.19` or later. It requires no ROM import beyond the game already loaded by Gen1Recomp and includes no game art, audio, or ROM-derived assets.
+The mod is available for **Red, Blue, Yellow, Gold, Silver, and Crystal** on Gen1Recomp `0.2.24` or later. It requires no ROM import beyond the game already loaded by Gen1Recomp and includes no game art, audio, or ROM-derived assets.
 
 ## Type Academy locations
 
@@ -40,7 +40,7 @@ The compact learned move names fit the native move list. Generation 1 carries TM
 | TM67 | Steel | `STEEL-METRO` | No | Yes |
 | TM68 | ??? | `Q-METRO` | No | Yes |
 
-> **TM68 and vanilla Gold/Silver:** Gold/Silver has the `???` move type but no ordinary `???`-type Pokémon. TM68 is included for complete type coverage and becomes teachable automatically if another active content mod adds an eligible `???`-type species.
+> **TM68 and vanilla Gen 2:** Gold, Silver, and Crystal have the `???` move type but no ordinary `???`-type Pokémon. TM68 is included for complete type coverage and becomes teachable automatically if another active content mod adds an eligible `???`-type species.
 
 ## Learning eligibility
 
@@ -61,7 +61,7 @@ Pools are built from the active game’s current move data when the move is used
 
 ## Gen 2 Curse rule
 
-Native Gold/Silver Curse treats a Pokémon as a Ghost user when either of its types is Ghost. **Only when Curse is called by a Typed Metronome**, this mod applies the requested primary-type rule:
+Native Gen 2 Curse treats a Pokémon as a Ghost user when either of its types is Ghost. **Only when Curse is called by a Typed Metronome**, this mod applies the requested primary-type rule:
 
 | User’s type order | Typed-Metronome Curse branch |
 |---|---|
@@ -72,13 +72,13 @@ Normal Curse outside a Typed Metronome is not changed.
 
 ## Compatibility and limits
 
-The mod uses `engine_internals` only for narrow wrappers around the existing shop and Gen 2 Curse paths. It does not modify maps, map object positions, save layouts, native move records, battle damage formulas, or ROM assets. It is designed to compose with mods that add species or moves: matching species may learn their matching typed TM, and newly added moves of an existing type can enter that type’s pool.
+The mod uses `engine_internals` only for narrow wrappers around the existing shop and Gen 2 Curse paths. Crystal uses this shared Gen 2 behavior; no Crystal ROM data, art, audio, or scripts are bundled. It does not modify maps, map object positions, save layouts, native move records, battle damage formulas, or ROM assets. It is designed to compose with mods that add species or moves: matching species may learn their matching typed TM, and newly added moves of an existing type can enter that type’s pool.
 
 As with any mod that alters battle content, all participants in a link session should use the same enabled-mod set and version.
 
 ## Testing
 
-The release suite covers the numbered TM records, Gen1/Gen2 scope, type eligibility, native TM consumption conditions, Type Academy shop targeting, active-data move pools, original/typed Metronome exclusion, Gen 1 Normal Struggle, Gen 2 Curse in every pool, and Ghost-primary versus Ghost-secondary Curse resolution. It should still receive ordinary in-game testing across party learning, shop purchases, and representative battle effects.
+The release suite covers the numbered TM records, Gen 1 and Gen 2 scope, an explicit Crystal runtime identifier, type eligibility, native TM consumption conditions, Type Academy shop targeting, active-data move pools, original/typed Metronome exclusion, Gen 1 Normal Struggle, Gen 2 Curse in every pool, and Ghost-primary versus Ghost-secondary Curse resolution. Gold and Crystal execute the same full Gen 2 integration assertions. It should still receive ordinary in-game testing across party learning, shop purchases, and representative battle effects.
 
 ## Installation
 
